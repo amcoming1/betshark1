@@ -255,7 +255,8 @@ div.images {
 
   @media (max-width: 434px){
     .app{
-        background-image: url("https://i.pinimg.com/564x/ac/07/c5/ac07c51f3fec294f029b8ee3f6192848.jpg");
+        /* background-image: url("https://i.pinimg.com/564x/ac/07/c5/ac07c51f3fec294f029b8ee3f6192848.jpg"); */
+        background-color: #042331;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
