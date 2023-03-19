@@ -70,7 +70,7 @@ const requireLogin = (req, res, next) => {
 }
 
 
-app.post("/straightdrawpay", (req, res) => {
+app.post("/rolloverpay", (req, res) => {
     const { email, amount, network, phone_number } = req.body;
 	let kobo_amount = amount * 100
 
@@ -272,12 +272,12 @@ app.get('/fixedgame',async (req,res)=> {
 
 })
 
-app.get('/straightdraw',async (req,res)=> {
+app.get('/rollover',async (req,res)=> {
 	const user_id = req.session.user_id;
 	let {reference} = req.query;
 
 	if(user_id){	
-		const image = await Image.find({type:"straightdraw"});
+		const image = await Image.find({type:"rollover"});
 				const info = {
 				user_id,
 				image
@@ -297,7 +297,7 @@ app.get('/straightdraw',async (req,res)=> {
             res.redirect('/rolloverpay');
         }
         if (body.data.status === "success" && req.session.reference === reference || user_id) {      
-            const image = await Image.find({type:"straightdraw"});
+            const image = await Image.find({type:"rollover"});
 				const info = {
 				user_id,
 				image
@@ -419,9 +419,9 @@ app.post("/fixedgame", upload.array('file'), async(req,res) => {
 	res.redirect('/fixedgame')
 })
 
-app.post("/straightdraw", upload.array('file'), async(req,res) => {
+app.post("/rollover", upload.array('file'), async(req,res) => {
 	const newImage = new Image();
-	newImage.type = "straightdraw"
+	newImage.type = "rollover"
 	newImage.image = req.files.map(file => ({
 		url: file.path,
 		filename: file.filename
@@ -429,7 +429,7 @@ app.post("/straightdraw", upload.array('file'), async(req,res) => {
 	if(newImage.image.length === 0)
 		return res.redirect('/home')
 	await newImage.save();
-	res.redirect('/straightdraw')
+	res.redirect('/rollover')
 })
 
 app.post("/basketball", upload.array('file'), async(req,res) => {
@@ -461,9 +461,8 @@ app.post("/weekendgames", upload.array('file'), async(req,res) => {
 app.post('/delete/:type', async (req, res) => {
 	console.log(req.body)
 	const {type} = req.params
-	const {damn, last} = req.params;
+	console.log(type)
 	await cloudinary.uploader.destroy(`${Object.keys(req.body)}`)
-	console.log(`${damn}/${last}`)
 	const del =  await Image.deleteOne({url: Object.keys(req.body)})
 	res.redirect(`/${type}`)
 })
@@ -537,7 +536,7 @@ app.get("/fiveoddspay", (req, res) => {
     res.render('payment/fiveoddspay.ejs');
 });
 
-app.get("/straightdrawpay", (req, res) => {
+app.get("/rolloverpay", (req, res) => {
     res.render('payment/rolloverpay.ejs');
 });
 

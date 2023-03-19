@@ -27,7 +27,7 @@
             <div class="image">
                 <img class="odd_img" src="<%= img.image[0].url %>" alt="">
             </div>
-            <form class="del_img" method="POST" action="/delete/straightdraw">
+            <form class="del_img" method="POST" action="/delete/rollover">
                 <input class="invisible" type="text" name="<%= img.image[0].filename %>">
                 <% if(info.user_id){%>  
                     <button type="submit">delete</button>

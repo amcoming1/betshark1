@@ -33,8 +33,6 @@ function showHidePass(){
 function directToAPI(){
     let options = document.querySelector("#selectOddType");
     let form = document.querySelector(".upload_form");
-    if (options.value === "rollover")
-        options.value = "straightdraw"
     form.setAttribute("action", `/${options.value}`);
 }
 
