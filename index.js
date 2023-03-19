@@ -78,7 +78,7 @@ app.post("/straightdrawpay", (req, res) => {
         email: email,
         amount: kobo_amount,
         phone: phone_number,
-        callback_url: "https://betsolution.net/rollover"
+        callback_url: "https://www.betshark.net/rollover"
     }).then(function(body) {
         //extract the reference
         let reference = body.data.reference
@@ -103,7 +103,7 @@ app.post("/fiveoddspay", (req, res) => {
         email: email,
         amount: kobo_amount,
         phone: phone_number,
-        callback_url: "https://anxious-stole-yak.cyclic.app/fiveodds"
+        callback_url: "https://www.betshark.net/fiveodds"
     }).then(function(body) {
         //extract the reference
         let reference = body.data.reference
@@ -125,7 +125,7 @@ app.post("/weekendpay", (req, res) => {
         email: email,
         amount: kobo_amount,
         phone: phone_number,
-        callback_url: "https://anxious-stole-yak.cyclic.app/weekend"
+        callback_url: "https://www.betshark.net/weekend"
     }).then(function(body) {
         //extract the reference
         let reference = body.data.reference
@@ -148,7 +148,7 @@ app.post("/nbapay", (req, res) => {
         email: email,
         amount: kobo_amount,
         phone: phone_number,
-        callback_url: "https://anxious-stole-yak.cyclic.app/basketball"
+        callback_url: "https://www.betshark.net/basketball"
     }).then(function(body) {
         //extract the reference
         let reference = body.data.reference
@@ -170,7 +170,7 @@ app.post("/fixedgamepay", (req, res) => {
         email: email,
         amount: kobo_amount,
         phone: phone_number,
-        callback_url: "https://anxious-stole-yak.cyclic.app/fixedgame"
+        callback_url: "https://www.betshark.net/fixedgame"
     }).then(function(body) {
         //extract the reference
         let reference = body.data.reference
