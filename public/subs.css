@@ -280,6 +280,10 @@ button{
         font-size: 22px;
     }
 
+    p {
+        font-size: 16px;
+    }
+
     div.type_box{
         width: 80vw;
         height: 100px;
