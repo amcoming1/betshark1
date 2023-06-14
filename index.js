@@ -247,30 +247,7 @@ app.get("/fiveodds", async (req, res) => {
 app.get("/fixedgame", async (req, res) => {
   const user_id = req.session.user_id;
   let { reference } = req.query;
-  if (user_id) {
-    const image = await Image.find({ type: "fixedgame" });
-    const info = {
-      user_id,
-      image,
-    };
-    res.render("fixedgame.ejs", { info });
-    return;
-  }
-
-  if (!reference) {
-    res.redirect("/fixedgamepay");
-    return;
-  }
-
-  paystack.transaction.verify(reference, async function (error, body) {
-    if (error) {
-      res.redirect("/fixedgamepay");
-    }
-    if (
-      (body.data.status === "success" && req.session.reference === reference) ||
-      user_id
-    ) {
-      const image = await Image.find({ type: "fixedgame" });
+  const image = await Image.find({ type: "fixedgame" });
       const info = {
         user_id,
         image,
@@ -278,10 +255,42 @@ app.get("/fixedgame", async (req, res) => {
       res.render("fixedgame.ejs", { info });
       req.session.reference = null;
       return;
-    } else {
-      res.redirect("/fixedgamepay");
-    }
-  });
+
+  // if (user_id) {
+  //   const image = await Image.find({ type: "fixedgame" });
+  //   const info = {
+  //     user_id,
+  //     image,
+  //   };
+  //   res.render("fixedgame.ejs", { info });
+  //   return;
+  // }
+
+  // if (!reference) {
+  //   res.redirect("/fixedgamepay");
+  //   return;
+  // }
+
+  // paystack.transaction.verify(reference, async function (error, body) {
+  //   if (error) {
+  //     res.redirect("/fixedgamepay");
+  //   }
+  //   if (
+  //     (body.data.status === "success" && req.session.reference === reference) ||
+  //     user_id
+  //   ) {
+  //     const image = await Image.find({ type: "fixedgame" });
+  //     const info = {
+  //       user_id,
+  //       image,
+  //     };
+  //     res.render("fixedgame.ejs", { info });
+  //     req.session.reference = null;
+  //     return;
+  //   } else {
+  //     res.redirect("/fixedgamepay");
+  //   }
+  // });
 });
 
 
