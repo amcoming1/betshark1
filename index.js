@@ -30,7 +30,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      expires: new Date(Date.now() + 3600000), // session will expire in 1 hour
+      expires: new Date(Date.now() +  7 * 24 * 60 * 60 * 1000), // session will expire in 1 hour
     },
   })
 );
